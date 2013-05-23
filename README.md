@@ -20,8 +20,7 @@ var json2fontcss = require('json2fontcss'),
         eot: 'public/fonts/font.eot',
         woff: 'public/fonts/font.woff'
       },
-      // TODO: I am hesitant to require escaping from top-level...
-      fontFamily: '"my-icon-set"',
+      fontFamily: 'my-icon-set',
       format: 'stylus'
     },
     stylus = json2fontcss(params);

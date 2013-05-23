@@ -1,7 +1,7 @@
 {{#chars}}
-@{{name}}-font-family: {{{fontFamily}}};
+@{{name}}-font-family: {{{escapedFontFamily}}};
 @{{name}}-value: "\{{{value}}}";
-@{{name}}: '{{{fontFamily}}}' '"\\{{{value}}}"';
+@{{name}}: '{{{escapedFontFamily}}}' '"\\{{{value}}}"';
 {{/chars}}
 
 .icon-font-family(@char) {
@@ -32,7 +32,7 @@
 }
 
 @font-face {
-  font-family: {{{fontFamily}}};
+  font-family: {{{escapedFontFamily}}};
   {{#fonts.eot}}
   src:url("{{{fonts.eot}}}");
   {{/fonts.eot}}

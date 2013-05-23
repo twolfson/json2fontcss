@@ -1,15 +1,18 @@
 @icon1-font-family: "my-icon-set";
 @icon1-value: "\e0000";
-@icon1: "my-icon-set" "\e0000";
+@icon1: '"my-icon-set"' '"\\e0000"';
 @icon2-font-family: "my-icon-set";
 @icon2-value: "\e0001";
-@icon2: "my-icon-set" "\e0001";
+@icon2: '"my-icon-set"' '"\\e0001"';
 @icon3-font-family: "my-icon-set";
 @icon3-value: "\e0002";
-@icon3: "my-icon-set" "\e0002";
+@icon3: '"my-icon-set"' '"\\e0002"';
 
-.icon(@char) {
-  font-family: ~`'@{char}'.split(", ")[0].slice(1)`;
+.icon-font-family(@char) {
+  font-family: ~`@{char}[0]`;
+}
+
+.icon-font() {
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -17,9 +20,18 @@
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+}
+
+.icon-content(@char) {
+  content: ~`@{char}[1]`;
+}
+
+.icon(@char) {
+  .icon-font-family(@char);
+  .icon-font();
 
   &:before {
-    content: ~`'@{char}'.split(", ")[1].slice(0, -1)`;
+    .icon-content(@char);
   }
 }
 

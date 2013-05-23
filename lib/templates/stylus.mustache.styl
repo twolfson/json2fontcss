@@ -1,7 +1,7 @@
 {{#chars}}
-${{name}}_font_family = {{{fontFamily}}};
+${{name}}_font_family = {{{escapedFontFamily}}};
 ${{name}}_value = "\{{{value}}}";
-${{name}} = {{{fontFamily}}} "\{{{value}}}";
+${{name}} = {{{escapedFontFamily}}} "\{{{value}}}";
 {{/chars}}
 
 iconFontFamily($char) {
@@ -32,7 +32,7 @@ icon($char) {
 }
 
 @font-face {
-  font-family: {{{fontFamily}}};
+  font-family: {{{escapedFontFamily}}};
   {{#fonts.eot}}
   src:url("{{{fonts.eot}}}");
   {{/fonts.eot}}

@@ -1,15 +1,18 @@
-$icon1-font-family: "my-icon-set";
-$icon1-value: "\e0000";
-$icon1: "my-icon-set" "\e0000";
-$icon2-font-family: "my-icon-set";
-$icon2-value: "\e0001";
-$icon2: "my-icon-set" "\e0001";
-$icon3-font-family: "my-icon-set";
-$icon3-value: "\e0002";
-$icon3: "my-icon-set" "\e0002";
+$icon1_font_family = "my-icon-set";
+$icon1_value = "\e0000";
+$icon1 = "my-icon-set" "\e0000";
+$icon2_font_family = "my-icon-set";
+$icon2_value = "\e0001";
+$icon2 = "my-icon-set" "\e0001";
+$icon3_font_family = "my-icon-set";
+$icon3_value = "\e0002";
+$icon3 = "my-icon-set" "\e0002";
 
-@icon($char) {
+iconFontFamily($char) {
   font-family: $char[0];
+}
+
+iconFont() {
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -17,9 +20,18 @@ $icon3: "my-icon-set" "\e0002";
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+}
+
+iconContent($char) {
+  content: $char[1];
+}
+
+icon($char) {
+  iconFontFamily($char)
+  iconFont()
 
   &:before {
-    content: $char[1];
+    iconContent($char)
   }
 }
 

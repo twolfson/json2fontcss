@@ -3,17 +3,17 @@
         {
             "name": "icon1",
             "value": "e0000",
-            "fontFamily": "\"my-icon-set\""
+            "fontFamily": "my-icon-set"
         },
         {
             "name": "icon2",
             "value": "e0001",
-            "fontFamily": "\"my-icon-set\""
+            "fontFamily": "my-icon-set"
         },
         {
             "name": "icon3",
             "value": "e0002",
-            "fontFamily": "\"my-icon-set\""
+            "fontFamily": "my-icon-set"
         }
     ],
     "fonts": {
@@ -22,5 +22,6 @@
         "eot": "abc/123/font.eot",
         "woff": "abc/123/font.woff"
     },
-    "fontFamily": "\"my-icon-set\""
+    "fontFamily": "my-icon-set",
+    "escapedFontFamily": "\"my-icon-set\""
 }

@@ -20,7 +20,7 @@ module.exports = {
         eot: 'abc/123/font.eot',
         woff: 'abc/123/font.woff'
       },
-      fontFamily: '"my-icon-set"'
+      fontFamily: 'my-icon-set'
     };
   },
   'processed via json2fontcss': function () {
@@ -40,13 +40,7 @@ module.exports = {
     // Load in the files and assert
     var actual = this.result,
         expected = fs.readFileSync(expectedDir  + '/' + this.filename, 'utf8');
-    // assert.strictEqual(actual, expected);
-  },
-  'is deep equal to expected': function () {
-    // Load in the files and assert
-    var actual = JSON.parse(this.result),
-        expected = require(expectedDir  + '/' + this.filename, 'utf8');
-    assert.deepEqual(actual, expected);
+    assert.strictEqual(actual, expected);
   },
 
   // JSON
