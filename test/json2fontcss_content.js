@@ -8,11 +8,20 @@ var assert = require('assert'),
 module.exports = {
   // Common setup/assertion
   'An array of characters and names': function () {
-    this.info = [
-      {'name': 'sprite1', 'x': 0, 'y': 0, 'width': 10, 'height': 20, 'image': 'nested/dir/spritesheet.png'},
-      {'name': 'sprite2', 'x': 10, 'y': 20, 'width': 20, 'height': 30, 'image': 'nested/dir/spritesheet.png'},
-      {'name': 'sprite3', 'x': 30, 'y': 50, 'width': 50, 'height': 50, 'image': 'nested/dir/spritesheet.png'}
-    ];
+    this.params = {
+      chars: [
+        {'name': 'icon1', 'value': '\e0000'},
+        {'name': 'icon2', 'value': '\e0001'},
+        {'name': 'icon3', 'value': '\e0002'}
+      ],
+      fonts: {
+        svg: 'abc/123/font.svg',
+        ttf: 'abc/123/font.ttf',
+        eot: 'abc/123/font.eot',
+        woff: 'abc/123/font.woff'
+      },
+      fontFamily: '"my-icon-set"'
+    };
   },
   'processed via json2fontcss': function () {
     // Convert info into result via json2fontcss
@@ -42,7 +51,7 @@ module.exports = {
 
   // JSON
   'processed into JSON': [function () {
-    this.options = null;
+    this.params.template = null;
     this.filename = 'json.json';
   }, 'processed via json2fontcss'],
   'is valid JSON': function () {
@@ -54,55 +63,54 @@ module.exports = {
 
   // Stylus
   'processed into Stylus': [function () {
-    this.options = {'format': 'stylus'};
+    this.params.template = 'stylus';
     this.filename = 'stylus.styl';
   }, 'processed via json2fontcss'],
-  'is valid Stylus': function (done) {
+  'is valid Stylus': function () {
     // Add some stylus which hooks into our result
-    var styl = this.result;
-    styl += [
-      '.feature',
-      '  height: $sprite1_height;',
-      '  spriteWidth($sprite2)',
-      '  spriteImage($sprite3)',
-      '',
-      '.feature2',
-      '  sprite($sprite2)'
-    ].join('\n');
+    // var styl = this.result;
+    // styl += [
+    //   '.feature',
+    //   '  height: $sprite1_height;',
+    //   '  spriteWidth($sprite2)',
+    //   '  spriteImage($sprite3)',
+    //   '',
+    //   '.feature2',
+    //   '  sprite($sprite2)'
+    // ].join('\n');
 
-    // Render the stylus
-    var stylus = require('stylus');
+    // // Render the stylus
+    // var stylus = require('stylus');
 
-    stylus.render(styl, function handleStylus (err, css) {
-      // Assert no errors and validity of CSS
-      assert.strictEqual(err, null);
-      assert.notEqual(css, '');
+    // stylus.render(styl, function handleStylus (err, css) {
+    //   // Assert no errors and validity of CSS
+    //   assert.strictEqual(err, null);
+    //   assert.notEqual(css, '');
 
-      // TODO: Validate CSS
-      // console.log('Stylus', css);
+    //   // TODO: Validate CSS
+    //   // console.log('Stylus', css);
 
-      // Callback
-      done(err);
-    });
+    //   // Callback
+    //   done(err);
+    // });
   },
 
   // LESS
   'processed into LESS': [function () {
-    this.options = {'format': 'less'};
+    this.params.template = 'less';
     this.filename = 'less.less';
   }, 'processed via json2fontcss'],
   'is valid LESS': function (done) {
     // Add some LESS to our result
     var lessStr = this.result;
     lessStr += [
-      '.feature {',
-      '  height: @sprite1-height;',
-      '  .sprite-width(@sprite2);',
-      '  .sprite-image(@sprite3);',
+      '.feature:before {',
+      '  font-family: @icon1-font-family;',
+      '  content: @icon2-value;',
       '}',
       '',
       '.feature2 {',
-      '  .sprite(@sprite2);',
+      '  .icon(@icon3);',
       '}'
     ].join('\n');
 
@@ -112,7 +120,7 @@ module.exports = {
       assert.strictEqual(err, null);
       assert.notEqual(css, '');
 
-      // console.log('LESS', css);
+      console.log('LESS', css);
 
       // Verify there are no braces in the CSS (array string coercion)
       assert.strictEqual(css.indexOf(']'), -1);
