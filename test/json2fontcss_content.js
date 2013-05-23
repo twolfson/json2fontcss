@@ -71,7 +71,7 @@ module.exports = {
     var styl = this.result;
     styl += [
       '.feature:before',
-      '  font-family: $icon1-font-family;',
+      '  font-family: $icon1_font_family',
       '  iconContent($icon2)',
       '',
       '.feature2',

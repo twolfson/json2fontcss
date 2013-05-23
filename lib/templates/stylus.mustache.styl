@@ -1,11 +1,14 @@
 {{#chars}}
-${{name}}-font-family: {{{fontFamily}}};
-${{name}}-value: "\{{{value}}}";
-${{name}}: {{{fontFamily}}} "\{{{value}}}";
+${{name}}_font_family = {{{fontFamily}}};
+${{name}}_value = "\{{{value}}}";
+${{name}} = {{{fontFamily}}} "\{{{value}}}";
 {{/chars}}
 
-@icon($char) {
+iconFontFamily($char) {
   font-family: $char[0];
+}
+
+iconFont() {
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -13,9 +16,18 @@ ${{name}}: {{{fontFamily}}} "\{{{value}}}";
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+}
+
+iconContent($char) {
+  content: $char[1];
+}
+
+icon($char) {
+  iconFontFamily($char)
+  iconFont()
 
   &:before {
-    content: $char[1];
+    iconContent($char)
   }
 }
 
