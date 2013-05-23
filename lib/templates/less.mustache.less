@@ -4,8 +4,11 @@
 @{{name}}: '{{{fontFamily}}}' '"\\{{{value}}}"';
 {{/chars}}
 
-.icon(@char) {
+.icon-font-family(@char) {
   font-family: ~`@{char}[0]`;
+}
+
+.icon-font() {
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -13,9 +16,18 @@
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+}
+
+.icon-content(@char) {
+  content: ~`@{char}[1]`;
+}
+
+.icon(@char) {
+  .icon-font-family(@char);
+  .icon-font();
 
   &:before {
-    content: ~`@{char}[1]`;
+    .icon-content(@char);
   }
 }
 

@@ -66,33 +66,32 @@ module.exports = {
     this.params.template = 'stylus';
     this.filename = 'stylus.styl';
   }, 'processed via json2fontcss'],
-  'is valid Stylus': function () {
+  'is valid Stylus': function (done) {
     // Add some stylus which hooks into our result
-    // var styl = this.result;
-    // styl += [
-    //   '.feature',
-    //   '  height: $sprite1_height;',
-    //   '  spriteWidth($sprite2)',
-    //   '  spriteImage($sprite3)',
-    //   '',
-    //   '.feature2',
-    //   '  sprite($sprite2)'
-    // ].join('\n');
+    var styl = this.result;
+    styl += [
+      '.feature:before',
+      '  font-family: $icon1-font-family;',
+      '  iconContent($icon2)',
+      '',
+      '.feature2',
+      '  icon($icon3)'
+    ].join('\n');
 
-    // // Render the stylus
-    // var stylus = require('stylus');
+    // Render the stylus
+    var stylus = require('stylus');
 
-    // stylus.render(styl, function handleStylus (err, css) {
-    //   // Assert no errors and validity of CSS
-    //   assert.strictEqual(err, null);
-    //   assert.notEqual(css, '');
+    stylus.render(styl, function handleStylus (err, css) {
+      // Assert no errors and validity of CSS
+      assert.strictEqual(err, null);
+      assert.notEqual(css, '');
 
-    //   // TODO: Validate CSS
-    //   // console.log('Stylus', css);
+      // TODO: Validate CSS
+      console.log('Stylus', css);
 
-    //   // Callback
-    //   done(err);
-    // });
+      // Callback
+      done(err);
+    });
   },
 
   // LESS
@@ -106,7 +105,7 @@ module.exports = {
     lessStr += [
       '.feature:before {',
       '  font-family: @icon1-font-family;',
-      '  content: @icon2-value;',
+      '  .icon-content(@icon2-value)',
       '}',
       '',
       '.feature2 {',
@@ -120,7 +119,7 @@ module.exports = {
       assert.strictEqual(err, null);
       assert.notEqual(css, '');
 
-      console.log('LESS', css);
+      // console.log('LESS', css);
 
       // Verify there are no braces in the CSS (array string coercion)
       assert.strictEqual(css.indexOf(']'), -1);
