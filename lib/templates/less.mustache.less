@@ -1,11 +1,11 @@
 {{#chars}}
 @{{name}}-font-family: {{{fontFamily}}};
 @{{name}}-value: "\{{{value}}}";
-@{{name}}: {{{fontFamily}}} "\{{{value}}}";
+@{{name}}: '{{{fontFamily}}}' '"\\{{{value}}}"';
 {{/chars}}
 
 .icon(@char) {
-  font-family: ~`"@{char}".split(", ")[0]`;
+  font-family: ~`@{char}[0]`;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -15,8 +15,7 @@
   -webkit-font-smoothing: antialiased;
 
   &:before {
-    {{! DEV: We perform a slice due to a trailing brace from string coercion of arrays }}
-    content: ~`"@{char}".split(", ")[1].slice(0, -1)`;
+    content: ~`@{char}[1]`;
   }
 }
 

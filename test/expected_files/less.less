@@ -9,7 +9,7 @@
 @icon3: "my-icon-set" "\e0002";
 
 .icon(@char) {
-  font-family: ~`"@{char}".split(", ")[0]`;
+  font-family: ~`'@{char}'.split(", ")[0].slice(1)`;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -19,7 +19,7 @@
   -webkit-font-smoothing: antialiased;
 
   &:before {
-    content: ~`"@{char}".split(", ")[1].slice(0, -1)`;
+    content: ~`'@{char}'.split(", ")[1].slice(0, -1)`;
   }
 }
 
