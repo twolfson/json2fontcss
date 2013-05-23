@@ -28,12 +28,19 @@
   "scripts": {
     "test": "grunt test"
   },
-  "devDependencies": {
-    "grunt": "~0.3.17"
-  },
-  "keywords": [],
   "dependencies": {
     "mustache": "~0.7.2",
     "underscore": "~1.4.4"
-  }
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
+  },
+  "keywords": [
+    "json",
+    "font",
+    "css",
+    "webfont",
+    "fontface",
+    "fontsmith"
+  ]
 }
