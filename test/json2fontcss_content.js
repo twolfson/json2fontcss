@@ -10,9 +10,9 @@ module.exports = {
   'An array of characters and names': function () {
     this.params = {
       chars: [
-        {'name': 'icon1', 'value': '\e0000'},
-        {'name': 'icon2', 'value': '\e0001'},
-        {'name': 'icon3', 'value': '\e0002'}
+        {'name': 'icon1', 'value': 'e0000'},
+        {'name': 'icon2', 'value': 'e0001'},
+        {'name': 'icon3', 'value': 'e0002'}
       ],
       fonts: {
         svg: 'abc/123/font.svg',
