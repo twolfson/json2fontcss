@@ -1,4 +1,4 @@
-# json2fontcss
+# json2fontcss [![Donate on Gittip](http://badgr.co/gittip/twolfson.png)](https://www.gittip.com/twolfson/)
 
 Converter from JSON to font variables for CSS
 
