@@ -1,4 +1,4 @@
-# json2fontcss [![Donate on Gittip](http://badgr.co/gittip/twolfson.png)](https://www.gittip.com/twolfson/)
+# json2fontcss [![Build status](https://travis-ci.org/twolfson/doubleshot.png?branch=master)](https://travis-ci.org/twolfson/doubleshot)
 
 Converter from JSON to font variables for CSS
 
@@ -71,6 +71,14 @@ json2fontcss.templates; // Object containing key-value pairs of template engines
 json2fontcss.addTemplate(name, fn); // Utility to add new templates
 json2fontcss.addMustacheTemplate(name, tmpl); // Utility to add new mustache templates
 ```
+
+## Donating
+Support this project and [others by twolfson][gittip] via [gittip][].
+
+[![Support via Gittip][gittip-badge]][gittip]
+
+[gittip-badge]: https://rawgithub.com/twolfson/gittip-badge/master/dist/gittip.png
+[gittip]: https://www.gittip.com/twolfson/
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint your code using [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
