@@ -1,7 +1,7 @@
 {
   "name": "json2fontcss",
   "description": "Converter from JSON to font variables for CSS",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/twolfson/json2fontcss",
   "author": {
     "name": "Todd Wolfson",
