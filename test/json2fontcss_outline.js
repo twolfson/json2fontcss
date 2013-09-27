@@ -11,6 +11,10 @@ module.exports = {
     'processed into LESS': {
       'matches as expected': true,
       'is valid LESS': true
+    },
+    'processed into SCSS': {
+      'matches as expected': true,
+      'is valid SCSS': true
     }
   }
 };
