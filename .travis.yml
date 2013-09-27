@@ -5,5 +5,9 @@ node_js:
   - "0.8"
   - "0.6"
 
+install:
+  - gem install sass
+  - npm install
+
 notifications:
   email: false
