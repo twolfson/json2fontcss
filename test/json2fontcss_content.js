@@ -1,7 +1,7 @@
 var assert = require('assert'),
     fs = require('fs'),
-    // exec = require('child_process').exec,
-    // Tempfile = require('temporary/lib/file'),
+    exec = require('child_process').exec,
+    Tempfile = require('temporary/lib/file'),
     json2fontcss = require('../lib/json2fontcss.js'),
     expectedDir = __dirname + '/expected_files';
 
@@ -155,21 +155,20 @@ module.exports = {
 
   // SCSS
   'processed into SCSS': [function () {
-    this.options = {'format': 'scss'};
+    this.params.template = 'scss';
     this.filename = 'scss.scss';
   }, 'processed via json2fontcss'],
   'is valid SCSS': function (done) {
     // Add some SCSS to our result
     var scssStr = this.result;
     scssStr += '\n' + [
-      '.feature {',
-      '  height: $sprite1-height;',
-      '  @include sprite-width($sprite2);',
-      '  @include sprite-image($sprite3);',
+      '.feature:before {',
+      '  font-family: $icon1-font-family;',
+      '  @include icon-content($icon2-value)',
       '}',
       '',
       '.feature2 {',
-      '  @include sprite($sprite2);',
+      '  @include icon($icon3);',
       '}'
     ].join('\n');
 
