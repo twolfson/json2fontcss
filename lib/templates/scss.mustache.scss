@@ -4,11 +4,11 @@ ${{name}}-value: "\{{{value}}}";
 ${{name}}: {{{escapedFontFamily}}} "\{{{value}}}";
 {{/chars}}
 
-@mixin iconFontFamily($char) {
-  font-family: nth($char,1);
+@mixin icon-font-family($char) {
+  font-family: nth($char, 1);
 }
 
-@mixin iconFont() {
+@mixin icon-font() {
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -18,16 +18,16 @@ ${{name}}: {{{escapedFontFamily}}} "\{{{value}}}";
   -webkit-font-smoothing: antialiased;
 }
 
-@mixin iconContent($char) {
-  content: nth($char,2);
+@mixin icon-content($char) {
+  content: nth($char, 2);
 }
 
 @mixin icon($char) {
-  @include iconFontFamily($char)
-  @include iconFont()
+  @include icon-font-family($char);
+  @include icon-font();
 
   &:before {
-    @include iconContent($char)
+    @include icon-content($char);
   }
 }
 

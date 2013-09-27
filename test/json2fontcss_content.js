@@ -99,7 +99,7 @@ module.exports = {
     lessStr += [
       '.feature:before {',
       '  font-family: @icon1-font-family;',
-      '  .icon-content(@icon2-value)',
+      '  .icon-content(@icon2)',
       '}',
       '',
       '.feature2 {',
@@ -164,7 +164,7 @@ module.exports = {
     scssStr += '\n' + [
       '.feature:before {',
       '  font-family: $icon1-font-family;',
-      '  @include icon-content($icon2-value)',
+      '  @include icon-content($icon2)',
       '}',
       '',
       '.feature2 {',
