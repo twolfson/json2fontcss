@@ -1,49 +1,47 @@
-  $sprite1-x: 0px;
-  $sprite1-y: 0px;
-  $sprite1-offset-x: 0px;
-  $sprite1-offset-y: 0px;
-  $sprite1-width: 10px;
-  $sprite1-height: 20px;
-  $sprite1-image: 'nested/dir/spritesheet.png';
-  $sprite1: 0px 0px 0px 0px 10px 20px 'nested/dir/spritesheet.png';
-  $sprite2-x: 10px;
-  $sprite2-y: 20px;
-  $sprite2-offset-x: -10px;
-  $sprite2-offset-y: -20px;
-  $sprite2-width: 20px;
-  $sprite2-height: 30px;
-  $sprite2-image: 'nested/dir/spritesheet.png';
-  $sprite2: 10px 20px -10px -20px 20px 30px 'nested/dir/spritesheet.png';
-  $sprite3-x: 30px;
-  $sprite3-y: 50px;
-  $sprite3-offset-x: -30px;
-  $sprite3-offset-y: -50px;
-  $sprite3-width: 50px;
-  $sprite3-height: 50px;
-  $sprite3-image: 'nested/dir/spritesheet.png';
-  $sprite3: 30px 50px -30px -50px 50px 50px 'nested/dir/spritesheet.png';
+$icon1-font-family: "my-icon-set";
+$icon1-value: "\e0000";
+$icon1: "my-icon-set" "\e0000";
+$icon2-font-family: "my-icon-set";
+$icon2-value: "\e0001";
+$icon2: "my-icon-set" "\e0001";
+$icon3-font-family: "my-icon-set";
+$icon3-value: "\e0002";
+$icon3: "my-icon-set" "\e0002";
 
-  @mixin sprite-width($sprite) {
-    width: nth($sprite, 5);
-  }
+@mixin iconFontFamily($char) {
+  font-family: nth($char,1);
+}
 
-  @mixin sprite-height($sprite) {
-    height: nth($sprite, 6);
-  }
+@mixin iconFont() {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
 
-  @mixin sprite-position($sprite) {
-    $sprite-offset-x: nth($sprite, 3);
-    $sprite-offset-y: nth($sprite, 4);
-    background-position: $sprite-offset-x  $sprite-offset-y;
-  }
+@mixin iconContent($char) {
+  content: nth($char,2);
+}
 
-  @mixin sprite-image($sprite) {
-    background-image: url(nth($sprite, 7));
-  }
+@mixin icon($char) {
+  @include iconFontFamily($char)
+  @include iconFont()
 
-  @mixin sprite($sprite) {
-    @include sprite-image($sprite);
-    @include sprite-position($sprite);
-    @include sprite-width($sprite);
-    @include sprite-height($sprite);
+  &:before {
+    @include iconContent($char)
   }
+}
+
+@font-face {
+  font-family: "my-icon-set";
+  src:url("abc/123/font.eot");
+  src:url("abc/123/font.eot?#iefix") format("embedded-opentype"),
+    url("abc/123/font.woff") format("woff"),
+    url("abc/123/font.ttf") format("truetype"),
+    url("abc/123/font.svg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
