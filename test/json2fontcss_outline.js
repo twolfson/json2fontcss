@@ -1,20 +1,23 @@
-module.exports = {
-  'An array of characters and names': {
-    'processed into JSON': {
-      'matches as expected': true,
-      'is valid JSON': true
-    },
-    'processed into Stylus': {
-      'matches as expected': true,
-      'is valid Stylus': true
-    },
-    'processed into LESS': {
-      'matches as expected': true,
-      'is valid LESS': true
-    },
-    'processed into SCSS': {
-      'matches as expected': true,
-      'is valid SCSS': true
-    }
-  }
-};
+module.exports = [{
+  'An array of characters and names': [{
+    'processed into JSON': [
+      'matches as expected',
+      'is valid JSON'
+    ]
+  }, {
+    'processed into Stylus': [
+      'matches as expected',
+      'is valid Stylus'
+    ]
+  }, {
+    'processed into LESS': [
+      'matches as expected',
+      'is valid LESS'
+    ]
+  }, {
+    'processed into SCSS': [
+      'matches as expected',
+      'is valid SCSS'
+    ]
+  }]
+}];
