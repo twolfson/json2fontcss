@@ -19,5 +19,10 @@ module.exports = [{
       'matches as expected',
       'is valid SCSS'
     ]
+  }, {
+    'processed into SCSS Maps': [
+      'matches as expected',
+      'is valid SCSS Maps'
+    ]
   }]
 }];

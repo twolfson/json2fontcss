@@ -1,0 +1,52 @@
+$icon-font: (
+{{#chars}}
+  "{{name}}": (
+    "family": {{{escapedFontFamily}}},
+    "value": "\{{{value}}}"
+  ),
+{{/chars}}
+);
+
+/*
+ * Call this mixins with $char as the name of the icon
+*/
+
+@mixin icon-font-family($char) {
+  font-family: map-get(map-get($icon-font, $char), "family");
+}
+
+@mixin icon-font() {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin icon-content($char) {
+  content: map-get(map-get($icon-font, $char), "value");
+}
+
+@mixin icon($char) {
+  @include icon-font-family($char);
+  @include icon-font();
+
+  &:before {
+    @include icon-content($char);
+  }
+}
+
+@font-face {
+  font-family: {{{escapedFontFamily}}};
+  {{#fonts.eot}}
+  src:url("{{{fonts.eot}}}");
+  {{/fonts.eot}}
+  src:{{#fonts.eot}}url("{{{fonts.eot}}}?#iefix") format("embedded-opentype"),
+    {{/fonts.eot}}{{#fonts.woff}}url("{{{fonts.woff}}}") format("woff"),
+    {{/fonts.woff}}{{#fonts.ttf}}url("{{{fonts.ttf}}}") format("truetype"),
+    {{/fonts.ttf}}{{#fonts.svg}}url("{{{fonts.svg}}}#icomoon") format("svg"){{/fonts.svg}};
+  font-weight: normal;
+  font-style: normal;
+}

@@ -182,5 +182,35 @@ module.exports = {
       // console.log('SCSS', css);
       done(err);
     });
+  },
+
+  'processed into SCSS Maps': [function () {
+    this.params.template = 'scss_maps';
+    this.filename = 'scss_maps.scss';
+  }, 'processed via json2fontcss'],
+  'is valid SCSS Maps': function (done) {
+    // Add some SCSS to our result
+    var scssStr = this.result;
+    scssStr += '\n' + [
+      '.feature:before {',
+      '  @include icon-font-family("icon1");',
+      '  @include icon-content("icon2")',
+      '}',
+      '',
+      '.feature2 {',
+      '  @include icon("icon3");',
+      '}'
+    ].join('\n');
+
+    // Render the SCSS, assert no errors, and valid CSS
+    var tmp = new Tempfile();
+    tmp.writeFileSync(scssStr);
+    exec('sass --scss ' + tmp.path, function (err, css, stderr) {
+      assert.strictEqual(stderr, '');
+      assert.strictEqual(err, null);
+      assert.notEqual(css, '');
+      // console.log('SCSS', css);
+      done(err);
+    });
   }
 };
